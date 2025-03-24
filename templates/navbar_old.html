@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <a href="{% url 'home' %}">
+        Home
+      </a>
+
+      <form method="GET" action="{% url 'home' %}">
+          <input name="q" placeholder="Search for books..." />
+      </form>
+      <hr>
+</body>
+</html>

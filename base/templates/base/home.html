@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">Miś&Books</h1>
+
+    <div class="row">
+        {% for book in books %}
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center">
+                        <img src="{{ book.book_cover.url }}" class="img-fluid rounded-start" alt="{{ book.book_title }}" style="max-height: 200px; width: auto;">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.book_title }}</h5>
+                            <p class="card-text"><strong>Author:</strong> {{ book.book_author }}</p>
+                            <p class="card-text"><strong>Genre:</strong> {{ book.book_genre }}</p>
+                            <p class="card-text"><strong>Description:</strong>{{ book.book_description|truncatechars:300 }}</p>
+                            <a href="{% url 'book' pk=book.id  p=2 %}" class="btn" style="background-color: #01787c; color: white;">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

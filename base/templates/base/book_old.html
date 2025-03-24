@@ -1,0 +1,43 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+  .book-content{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  }
+</style>
+
+<div class="container">
+  <img src="{{ book.book_cover.url }}" alt="{{ book.book_title }}"/>
+  <p>Title: {{ book.book_title }}</p>
+  <p>Genre: {{ book.book_genre }}</p>
+  <p>Author: {{ book.book_author }}</p>
+
+  <div class="book-content">
+    <div>
+      <p>{{ text_ru }}</p>
+    </div>
+
+    <div>
+      <p>{{ text_en }}</p>
+    </div>
+  </div>
+
+  {% if page > 0 %}
+  <a href="{% url 'book' book.id page|add:'-1' %}">Back</a>
+  {% endif %}
+
+  <form method="GET" action="{% url 'book' book.id page%}">
+    <span><input name="page" value="{{ page }}"/>of {{ pages }} pages</span>
+  </form>
+
+  {% if page < pages %}
+  <a href="{% url 'book' book.id page|add:'1' %}">Next</a>
+  {% endif %}
+
+</div>
+
+{% endblock content %}

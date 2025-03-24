@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miś&Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header style="background-color: #01787c; padding: 1rem 0;">  <!-- Updated header color -->
+        {% include 'navbar.html' %}
+    </header>
+
+    <main class="flex-grow-1 mb-5">
+        <div class="container mt-4">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
+
+    <footer style="background-color: #01787c; padding: 1rem 0; margin-top: auto;">  <!-- Updated footer color -->
+        <div class="container text-center">
+            <p class="mb-0 text-white">© 2023 Book Library. All rights reserved. <a href="{% url 'about' %}">About.</a></p>  <!-- Added text-white for better contrast -->
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
